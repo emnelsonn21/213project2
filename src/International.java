@@ -1,11 +1,19 @@
+
 public class International extends Nonresident {
 
-	private boolean isStudyAbroad; //might need setters and getters ugh 
+	private boolean isStudyAbroad; 
 	
-	public International(Profile profile, boolean isFullTime, int creditHours, boolean isStudyAbroad) {
-		super(profile, isFullTime, creditHours);
+	public International(Profile profile, boolean isFullTime, int creditHours, double tuitionDue, boolean isStudyAbroad) {
+		super(profile, isFullTime, creditHours, tuitionDue);
 		this.isStudyAbroad = isStudyAbroad;
 	}
+	
+	public static final int FULL_TIME_TUITION = 29737;
+	public static final int FULL_TIME_FEE = 3268;
+	public static final int ADDITIONAL_FEE = 2650;
+	public static final double PART_TIME_FEE = 3268 * 0.8;
+	public static final int PRICE_PER_CREDIT_HOUR = 966;
+	public static final int MAX_CREDIT_NO_FEE = 16;
 	
 	@Override
 	public void tuitionDue() { //why would this return void? shouldn't it return the value of tuition?
@@ -13,14 +21,14 @@ public class International extends Nonresident {
 		double tuition;
 		
 		if(this.getIsStudyAbroad()) {
-			tuition = 3268 + 2650;
+			tuition = FULL_TIME_FEE + ADDITIONAL_FEE;
 		}
 		
 		else {
-			tuition = 29737 + 3268 + 2650;
+			tuition = FULL_TIME_TUITION + FULL_TIME_FEE + ADDITIONAL_FEE;
 			
-			if (this.getCreditHours() > 16) {
-				tuition += (966 * (this.getCreditHours() - 16));
+			if (this.getCreditHours() > MAX_CREDIT_NO_FEE) {
+				tuition += (PRICE_PER_CREDIT_HOUR * (this.getCreditHours() - MAX_CREDIT_NO_FEE));
 			}
 		}
 		
