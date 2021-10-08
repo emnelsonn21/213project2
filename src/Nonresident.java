@@ -1,8 +1,15 @@
+
 public class Nonresident extends Student {
 
-	public Nonresident(Profile profile, boolean isFullTime, int creditHours) {
-		super(profile, isFullTime, creditHours);
+	public Nonresident(Profile profile, boolean isFullTime, int creditHours, double tuitionDue) {
+		super(profile, isFullTime, creditHours, tuitionDue);
 	}
+	
+	public static final int FULL_TIME_TUITION = 29737;
+	public static final int FULL_TIME_FEE = 3268;
+	public static final double PART_TIME_FEE = 3268 * 0.8;
+	public static final int PRICE_PER_CREDIT_HOUR = 966;
+	public static final int MAX_CREDIT_NO_FEE = 16;
 	
 	@Override
 	public void tuitionDue() { //why would this return void? shouldn't it return the value of tuition?
@@ -11,17 +18,15 @@ public class Nonresident extends Student {
 		double tuition;
 		
 		if(!this.getIsFullTime()) {
-			tuition = (966 * this.getCreditHours()) + 2614.4;
+			tuition = (PRICE_PER_CREDIT_HOUR * this.getCreditHours()) + PART_TIME_FEE;
 		}
 		
 		else {
-			tuition = 29737 + 3268;
+			tuition = FULL_TIME_TUITION + FULL_TIME_FEE;
 		
-		//create instance of student??? how to access credit hours???
-		//when calling : exampleResident.tuitionDue();
 		
-			if (this.getCreditHours() > 16) {
-				tuition += (966 * (this.getCreditHours() - 16));
+			if (this.getCreditHours() > MAX_CREDIT_NO_FEE) {
+				tuition += (PRICE_PER_CREDIT_HOUR * (this.getCreditHours() - MAX_CREDIT_NO_FEE));
 			}
 		}
 		
