@@ -1,3 +1,4 @@
+
 public class Roster {
 	private Student[] roster;
 	private int size;
@@ -10,6 +11,14 @@ public class Roster {
 			}
 		}
 		return -1;
+	}
+	
+	
+	public Student[] getStudents() {
+		return roster;
+	}
+	public void setStudents(Student[] newStudents) {
+		this.roster = newStudents;
 	}
 	
 	
@@ -29,7 +38,6 @@ public class Roster {
 	
 	
 	public boolean add(Student student) {
-		//have to consider: res, nonres, tristate, international?
 		
 		if (find(student) != -1) {
 			return false; //student already found, have to throw error !
@@ -73,6 +81,44 @@ public class Roster {
 			}
 		}
 		return -1;
+	}
+	
+	
+	public int getSize() {
+		return size;
+	}
+	
+	
+	public Student giveStudent(Student student) {
+		for (int index = 0; index < size; index++) {
+			if (student.equals(roster[index])) {
+				return roster[index];
+			}
+		}
+		return null;
+	}
+	
+	public International getInternational(Student student) {
+		Student stud = new Student();
+		for (int index = 0; index < size; index++) {
+			if (student.equals(roster[index])) {
+				stud = roster[index];
+				if (stud instanceof International) {
+					International inter = (International) stud;
+					return inter;
+				} else {
+					throw new IllegalArgumentException("International student not found");
+				}
+			}
+		}
+		
+		return null;
+	}
+	
+	public void getAllTuitions() {
+		for (int index = 0; index < size; index++) {
+			roster[index].tuitionDue();
+		}
 	}
 	
 	
