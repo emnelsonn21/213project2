@@ -74,6 +74,20 @@ public class Roster {
 		return true;
 	}
 	
+	public void  print() {
+		if (roster[0] == null) {
+			System.out.println("the roster is empty");
+			return;
+		}
+		
+		for (int i = 0; i < size; i++) {
+			System.out.println(roster[i].toString());
+		}
+		
+		System.out.println("end of roster");
+		
+	}
+	
 	private int findEmptySpot() {
 		for (int i = 0; i < roster.length; i++) {
 			if (roster[i] == null) {
