@@ -130,7 +130,13 @@ public class TuitionManager {
 		
 	}
 	
-	
+	/**
+	Makes new instance of Resident where all attributes are filled
+	@param line the string being tokenized
+	@param T the current token from string
+	@return instance of Resident
+	@author Emily Nelson
+	*/
 	public Resident makeNewResident(String line, StringTokenizer T) {
 		String name = T.nextToken();
 		String major = T.nextToken();
@@ -145,6 +151,13 @@ public class TuitionManager {
 		
 	}
 	
+	/**
+	Makes new instance of Nonresident where all attributes are filled
+	@param line the string being tokenized
+	@param T the current token from string
+	@return instance of Nonresident
+	@author Emily Nelson
+	*/
 	public Nonresident makeNewNonresident(String line, StringTokenizer T) {
 		String name = T.nextToken();
 		String major = T.nextToken();
@@ -159,6 +172,13 @@ public class TuitionManager {
 		
 	}
 	
+	/**
+	Makes new instance of International where all attributes are filled
+	@param line the string being tokenized
+	@param T the current token from string
+	@return instance of International
+	@author Emily Nelson
+	*/
 	public International makeNewInternational(String line, StringTokenizer T) {
 		String name = T.nextToken();
 		String major = T.nextToken();
@@ -174,6 +194,13 @@ public class TuitionManager {
 		
 	}
 	
+	/**
+	Makes new instance of Tristate where all attributes are filled
+	@param line the string being tokenized
+	@param T the current token from string
+	@return instance of Tristate
+	@author Emily Nelson
+	*/
 	public Tristate makeNewTristate(String line, StringTokenizer T) {
 		String name = T.nextToken();
 		String major = T.nextToken();
@@ -199,6 +226,13 @@ public class TuitionManager {
 		return profile;
 	}
 	
+	/**
+	Makes new instance of Profile where all attributes are filled
+	@param line the string being tokenized
+	@param T the current token from string
+	@return instance of Profile
+	@author Emily Nelson
+	*/
 	public Profile makeNewProfile2(String line, StringTokenizer T) {
 		String name = T.nextToken();
 		String strMajor = T.nextToken().toUpperCase();
