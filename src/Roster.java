@@ -126,6 +126,11 @@ public class Roster {
 		
 	}
 	
+	/**
+	Finds the first empty index/spot in the Student array
+	@return the index if an empty spot is found, -1 otherwise
+	@author Emily Nelson
+	*/
 	private int findEmptySpot() {
 		for (int i = 0; i < roster.length; i++) {
 			if (roster[i] == null) {
@@ -135,12 +140,21 @@ public class Roster {
 		return -1;
 	}
 	
-	
+	/**
+	Returns the size of Roster
+        @return size of Roster
+	@author Emily Nelson 
+	*/
 	public int getSize() {
 		return size;
 	}
 	
-	
+	/**
+	Gets the index where the student is located in the Student array
+	@param student the student being looked for
+	@return the index of the student if found, null otherwise
+	@author Emily Nelson
+	*/
 	public Student giveStudent(Student student) {
 		for (int index = 0; index < size; index++) {
 			if (student.equals(roster[index])) {
@@ -150,6 +164,12 @@ public class Roster {
 		return null;
 	}
 	
+	/**
+	Gets the index where the International student is located in the Student array
+	@param student the Internation student being looked for
+	@return the index of the International student if found, null otherwise
+	@author Emily Nelson
+	*/
 	public International getInternational(Student student) {
 		Student stud = new Student();
 		for (int index = 0; index < size; index++) {
@@ -167,6 +187,10 @@ public class Roster {
 		return null;
 	}
 	
+	/**
+	Gets the tuition due for all students the Student array
+	@author Emily Nelson
+	*/
 	public void getAllTuitions() {
 		for (int index = 0; index < size; index++) {
 			roster[index].tuitionDue();
