@@ -46,7 +46,14 @@ public class Nonresident extends Student {
 			}
 		}
 		
-		this.setTuitionDue(tuition);
+		if (this.getTuitionDue() == 0) {
+			this.setTuitionDue(tuition);
+			this.originalTuition = tuition;
+		}
+		
+		if (this.getDidFinancialAid() != 0) {
+			this.setTuitionDue(this.getTuitionDue());
+		}
 		
 	}
 	
@@ -57,7 +64,8 @@ public class Nonresident extends Student {
 	*/
 	@Override
 	public String toString() {
-		return super.toString();
+		String str = super.toString();
+		return str + "NonResident";
 	}
 
 
