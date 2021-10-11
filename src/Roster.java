@@ -111,6 +111,7 @@ public class Roster {
 		return true;
 	}
 	
+	// did this in Tuition manager
 	public void  print() {
 		if (roster[0] == null) {
 			System.out.println("the roster is empty");
