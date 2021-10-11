@@ -111,6 +111,10 @@ public class Roster {
 		return true;
 	}
 	
+	/**
+	Displays the students in the Student array without specifying the order
+	@author Cristofer Gomez-Martinez
+	*/
 	public void  print() {
 		if (roster[0] == null) {
 			   System.out.println("the roster is empty");
@@ -127,6 +131,10 @@ public class Roster {
 		
 	}
 	
+	/**
+	Displays the students in the Student array sorted by student names
+	@author Cristofer Gomez-Martinez
+	*/
 	public void printByName() {
 	   if (roster[0] == null) {
 		System.out.println("the roster is empty");
@@ -159,6 +167,10 @@ public class Roster {
      	   }
 	}
 	
+	/**
+	Displays the students who have made payments in the Student array ordered by payment date
+	@author Cristofer Gomez-Martinez
+	*/
 	public void printByPaymentDate() {
 	    if (roster[0] == null) {
 		System.out.println("the roster is empty");
