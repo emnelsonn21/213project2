@@ -1,5 +1,12 @@
-
+/**
+This class defines the type Student, with all of its attributes and methods
+@author Emily Nelson, Cristofer Gomez-Martinez
+*/
 public class Student {
+	/**
+	Sets the amount of tuituion due from student
+	@author Emily Nelson
+	*/
 	public void tuitionDue() {
 	}
 	
@@ -11,6 +18,11 @@ public class Student {
 	private double tuitionDue;
 	Date datePaid = new Date();
 	
+	/**
+	Sets the profile of student
+	@param profile the profile to set 
+	@author Emily Nelson
+	*/
 	public Student(Profile profile) {
 		this.profile = profile;
 	}
@@ -24,6 +36,14 @@ public class Student {
 	
 	
 	//constructor attempt 2
+	/**
+	Constructor for a Student
+	@param profile the profile to set 
+	@param isFullTime sets the student to being full time or not 
+	@param creditHours the credit hours to set
+	@param tuitionDue the tuition due to set
+	@author Emily Nelson
+	*/
 	public Student(Profile profile, boolean isFullTime, int creditHours, double tuitionDue) {
 		this.profile = profile;
 		this.isFullTime = isFullTime;
@@ -41,6 +61,11 @@ public class Student {
 	}
 	
 	//NEED TO FIX!!!!!!!!!!
+	/**
+	Returns the student in string form
+	@return textual represential of student 
+	@author Cristofer Gomez-Martinez
+	*/
 	@Override
 	public String toString() {
 		String date = "--/--/--";
