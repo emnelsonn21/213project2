@@ -41,16 +41,20 @@ public class Resident extends Student {
 		else {
 			tuition = FULL_TIME_TUITION + FULL_TIME_FEE;
 		
-		//create instance of student??? how to access credit hours???
-		//when calling : exampleResident.tuitionDue();
 		
 			if (this.getCreditHours() > MAX_CREDIT_NO_FEE) {
 				tuition += (PRICE_PER_CREDIT_HOUR * (this.getCreditHours() - MAX_CREDIT_NO_FEE));
 			}
 		}
 		
-		if (this.getTuitionDue() == 0) {
+		
+		if (this.getTuitionDue() == 0 && getDidFinancialAid() == 0) {
 			this.setTuitionDue(tuition);
+			this.originalTuition = tuition;
+		} 
+		//original tuition is 20000. fa was applied and now it's 19000 so tuitionDue was set to 19000. keep tuitionDue amount
+		if (this.getDidFinancialAid() != 0) {
+			this.setTuitionDue(this.getTuitionDue());
 		}
 		//else, tuition  has already been calculated so no need to do anything
 		
@@ -63,7 +67,8 @@ public class Resident extends Student {
 	*/
 	@Override
 	public String toString() {
-		return super.toString();
+	    String str = super.toString();
+	    return str + "Resident";
 	}
 
 }
