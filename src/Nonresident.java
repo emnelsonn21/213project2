@@ -5,7 +5,7 @@ This class defines the type Nonresident, which is an extenstion of Student, with
 public class Nonresident extends Student {
 	
 	/**
-	Constructor for an Nonresident student
+	Constructor for a Nonresident student
 	Creates a type Student for this student
 	@param profile the profile to set 
 	@param isFullTime sets the student to being full time or not 
