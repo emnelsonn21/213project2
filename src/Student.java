@@ -43,7 +43,18 @@ public class Student {
 	//NEED TO FIX!!!!!!!!!!
 	@Override
 	public String toString() {
-		return "hello";
+		String date = "--/--/--";
+		if(datePaid != null) {
+			date = datePaid.printAsString(datePaid);
+		}
+		
+		String className= this.getClass().getName();
+		
+		//need to figure out total payment and className
+		
+		return profile.toString() + ":" + String.valueOf(creditHours) + " credit hours" + ":tuition due:" 
+		+ String.valueOf(tuitionDue) + ":total payment:" + String.valueOf(tuitionDue) + ":last payment date: " + date
+		+ ":" + className;
 	}
 	
 	
