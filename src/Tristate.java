@@ -1,8 +1,21 @@
-
+/**
+This class defines the type Tristate, which is an extenstion of Nonresident, with all of its attributes and methods
+@author Emily Nelson, Cristofer Gomez-Martinez
+*/
 public class Tristate extends Nonresident {
 
 	private String state;
 	
+	/**
+	Constructor for a Tristate student
+	Creates a type Nonresident for this student
+	@param profile the profile to set 
+	@param isFullTime sets the student to being full time or not 
+	@param creditHours the credit hours to set
+	@param tuitionDue the tuition due to set
+	@param state sets the state student is from, NY or CT
+	@author Emily Nelson
+	*/  
 	public Tristate(Profile profile, boolean isFullTime,  int creditHours, double tuitionDue, String state) {
 		super(profile, isFullTime, creditHours, tuitionDue);
 		this.state = state;
@@ -16,6 +29,10 @@ public class Tristate extends Nonresident {
 	public static final int NY_DISCOUNT = 4000;
 	public static final int CT_DISCOUNT = 5000;
 	
+	/**
+	Sets the amount of tuituion due from student
+	@author Emily Nelson
+	*/
 	@Override
 	public void tuitionDue() { //why would this return void? shouldn't it return the value of tuition?
 		//also how are we supposed to access the information of the student if there's no input??
@@ -48,6 +65,11 @@ public class Tristate extends Nonresident {
 		
 	}
 	
+	/**
+	Returns the student in string form
+	@return textual represential of student 
+	@author Emily Nelson
+	*/ 
 	@Override
 	public String toString() {
 		return super.toString();
