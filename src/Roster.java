@@ -111,19 +111,110 @@ public class Roster {
 		return true;
 	}
 	
-	// did this in Tuition manager
 	public void  print() {
 		if (roster[0] == null) {
-			System.out.println("the roster is empty");
-			return;
-		}
+			   System.out.println("the roster is empty");
+        	}else {
+
+     	   	System.out.println("* list of students in the roster **");
+		   
+     	   	for (int i = 0; i < getSize(); i++) {
+     		   System.out.println(roster[i].toString());
+     	  	}
+
+     	   	System.out.println("end of roster");
+        	}
 		
-		for (int i = 0; i < size; i++) {
-			System.out.println(roster[i].toString());
-		}
-		
-		System.out.println("end of roster");
-		
+	}
+	
+	public void printByName() {
+	   if (roster[0] == null) {
+		System.out.println("the roster is empty");
+    	   }else {
+
+     	   System.out.println("* list of students ordered by name **");
+     	   
+     	   Student[] sortedRoster = new Student[getSize()];
+     	   
+     	   for(int i = 0; i < getSize(); i++) {
+    			sortedRoster[i] = roster[i];
+     	   }
+     	   
+     	   //sort
+     	   for(int i= 0; i < getSize(); i++) {
+     		   for(int j = i + 1; j < getSize(); i++) {
+     			   if((sortedRoster[j].getProfile().getName().compareTo(sortedRoster[i].getProfile().getName())) < 0){
+     				   Student temp = sortedRoster[i];
+     				   sortedRoster[i] = sortedRoster[j];
+     				   sortedRoster[j] = temp;
+     			   }
+     		   }
+     	   }
+     	   
+     	   for (int i = 0; i < getSize(); i++) {
+     		   System.out.println(sortedRoster[i].toString());
+     	   }
+
+     	   System.out.println("end of roster");
+     	   }
+	}
+	
+	public void printByPaymentDate() {
+	    if (roster[0] == null) {
+		System.out.println("the roster is empty");
+     	    }else {
+
+     	   System.out.println("* list of students made payments ordered by payment date **");
+     	   
+     	   //check how many students have made payments
+     	   int studentPayments = 0;
+     	  
+     	   for(int i = 0; i < getSize(); i++) {
+     		   String date = "--/--/--";
+     			if(roster[i].datePaid != null) {
+     				date = roster[i].datePaid.printAsString(roster[i].datePaid);
+     			}
+     			
+     			if((date.equals("--/--/--")) == false) {
+     				studentPayments++;
+     			}
+     	   }
+     	   
+     	   //make new array with only students that made payments
+     	   Student[] sortedRoster = new Student[studentPayments];
+     	   int index = 0;
+     	   
+     	   for(int i = 0; i < getSize(); i++) {
+     		   String date = "--/--/--";
+     			if(roster[i].datePaid != null) {
+     				date = roster[i].datePaid.printAsString(roster[i].datePaid);
+     			}
+     			
+     			if((date.equals("--/--/--")) == false) {
+     				sortedRoster[index] = roster[i];
+     				index++;
+     			}
+     		   
+     	   }
+     	   
+     	   //sort
+     	   for (int i = 0; i < studentPayments; i++) {
+     		   for (int j = 1; j < studentPayments; j++) {
+    				//if j is older than i, swap i and j
+     			   if (sortedRoster[i].datePaid.compareTo(sortedRoster[j].datePaid) == 1) {
+     				   Student temp = sortedRoster[i];
+     				   sortedRoster[i] = sortedRoster[j];
+     				   sortedRoster[j] = temp;
+    				}
+    		}
+    	   }
+     	   
+     	   for (int i = 0; i < studentPayments; i++) {
+     		   System.out.println(sortedRoster[i].toString());
+     	   }
+
+     	   System.out.println("end of roster");
+     	   }
 	}
 	
 	/**
