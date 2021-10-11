@@ -1,8 +1,21 @@
-
+/**
+ This class defines the type International, which is an extenstion of Nonresident, with all of its attributes and methods
+ @author Emily Nelson, Cristofer Gomez-Martinez
+ */
 public class International extends Nonresident {
 
 	private boolean isStudyAbroad; 
 	
+	/**
+	Constructor for an International student
+	Creates a type Nonresident for this student
+	@param profile the profile to set 
+	@param isFullTime sets the student to being full time or not 
+	@param creditHours the credit hours to set
+	@param tuitionDue the tuition due to set
+	@param isStudyAbroad sets the student to studying abroad or not
+	@author Emily Nelson
+	*/  
 	public International(Profile profile, boolean isFullTime, int creditHours, double tuitionDue, boolean isStudyAbroad) {
 		super(profile, isFullTime, creditHours, tuitionDue);
 		this.isStudyAbroad = isStudyAbroad;
@@ -15,6 +28,10 @@ public class International extends Nonresident {
 	public static final int PRICE_PER_CREDIT_HOUR = 966;
 	public static final int MAX_CREDIT_NO_FEE = 16;
 	
+	/**
+	Sets the amount of tuituion due from student
+	@author Emily Nelson
+	*/
 	@Override
 	public void tuitionDue() { //why would this return void? shouldn't it return the value of tuition?
 		
