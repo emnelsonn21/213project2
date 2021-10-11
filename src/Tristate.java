@@ -75,10 +75,21 @@ public class Tristate extends Nonresident {
 		return super.toString();
 	}
 	
-	
+	/**
+	Returns the state the student is from, NY or CT
+	@return state abbreviation
+	@author Emily Nelson
+	*/ 
 	public String getState() {
 		return state;
 	}
+	
+	/**
+	Sets the state the student is from to a new state
+	Only states should be NY or CT
+	@param newState the new state to set 
+	@author Emily Nelson
+	*/  
 	public void setState(String newState) {
 		this.state = newState;
 	}
