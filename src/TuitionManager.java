@@ -1,6 +1,10 @@
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
+/**
+This class contains the method that organizes the user input
+@author Emily Nelson, Cristofer Gomez-Martinez
+*/
 public class TuitionManager {
 
 	public static final int MINFULLTIME = 12; 
@@ -217,6 +221,13 @@ public class TuitionManager {
 		
 	}
 	
+	/**
+	Makes new instance of Profile where all attributes are filled
+	@param name the name to set for Profile
+	@param strMajor the major to set for Profile
+	@return instance of Profile
+	@author Emily Nelson
+	*/
 	public Profile makeNewProfile(String name, String strMajor) {
 		Profile profile = new Profile();
 		String strMajorCap = strMajor.toUpperCase();
