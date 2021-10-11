@@ -61,7 +61,14 @@ public class Tristate extends Nonresident {
 			tuition -= CT_DISCOUNT;
 		}
 		
-		this.setTuitionDue(tuition);
+		if (this.getTuitionDue() == 0) {
+			this.setTuitionDue(tuition);
+			this.originalTuition = tuition;
+		}
+		
+		if (this.getDidFinancialAid() != 0) {
+			this.setTuitionDue(this.getTuitionDue());
+		}
 		
 	}
 	
@@ -72,7 +79,8 @@ public class Tristate extends Nonresident {
 	*/ 
 	@Override
 	public String toString() {
-		return super.toString();
+		String str = super.toString();
+		return str + "Tristate";
 	}
 	
 	/**
