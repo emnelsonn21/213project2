@@ -53,14 +53,30 @@ public class International extends Nonresident {
 		
 	}
 	
+	/**
+	Returns the student in string form
+	@return textual represential of student 
+	@author Emily Nelson
+	*/  
 	@Override
 	public String toString() {
 		return super.toString();
 	}
 	
+	/**
+	Checks if the student is studying abroad
+	@return true if student is studying abroad, false otherwise
+	@author Emily Nelson
+	*/
 	public boolean getIsStudyAbroad() {
 		return isStudyAbroad;
 	}
+	
+	/**
+	Sets the student to either studying abroad or not
+	@param isStudyAbroad the new boolean value to set
+	@author Emily Nelson
+	*/
 	public void setIsStudyAbroad(boolean isStudyAbroad) {
 		this.isStudyAbroad = isStudyAbroad;
 	}
