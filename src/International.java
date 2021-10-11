@@ -49,7 +49,15 @@ public class International extends Nonresident {
 			}
 		}
 		
-		this.setTuitionDue(tuition);
+		if (this.getTuitionDue() == 0) {
+			this.setTuitionDue(tuition);
+			this.originalTuition = tuition;
+		}
+		
+		if (this.getDidFinancialAid() != 0) {
+			this.setTuitionDue(this.getTuitionDue());
+		}
+		
 		
 	}
 	
@@ -60,7 +68,8 @@ public class International extends Nonresident {
 	*/  
 	@Override
 	public String toString() {
-		return super.toString();
+		String str = super.toString();
+		return str + "International";
 	}
 	
 	/**
