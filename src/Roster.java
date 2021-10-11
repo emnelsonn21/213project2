@@ -199,9 +199,7 @@ public class Roster {
      	   int index = 0;
      	   
      	   for(int i = 0; i < size; i++) {
-     		   String date = "--/--/--";
      			if(roster[i].getDatePaid().getDay() != 0) {
-     				date = roster[i].getDatePaid().printAsString(roster[i].getDatePaid());
      				sortedRoster[index] = roster[i];
      				index++;
      			}
