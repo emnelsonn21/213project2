@@ -4,6 +4,11 @@ import java.util.StringTokenizer;
 public class TuitionManager {
 
 	public static final int MINFULLTIME = 12; 
+	
+	/**
+	Reads the command lines from the console
+	@author Emily Nelson, Cristofer Gomez-Martinez
+	*/
 	public void run() {
 		Roster roster = new Roster();
 		Student[] newRoster = new Student[4];
