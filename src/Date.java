@@ -26,7 +26,7 @@ It contains the methods that check if a user-inputted date is valid and that com
 				year = Integer.valueOf(tokenizer.nextToken().trim());
 			}
 			catch (NumberFormatException nfe) {
-				throw new IllegalArgumentException("invalid date");
+				throw new IllegalArgumentException();
 		    }
 			
 			Calendar calendar = Calendar.getInstance();
@@ -57,7 +57,6 @@ It contains the methods that check if a user-inputted date is valid and that com
 	public static final int QUADRENNIAL = 4;
 	public static final int CENTENNIAL = 100;
 	public static final int QUARTERCENTENNIAL = 400;
-	public static final int THE_EIGHTYS = 1980;
 	public static final int THIS_YEAR = 2021;
 	public static final int JANUARY = 1;
 	public static final int DECEMBER = 12;
@@ -80,7 +79,6 @@ It contains the methods that check if a user-inputted date is valid and that com
 	*/
 	public boolean isValid() {
 		
-		
 		if (day > LAST_DAY) {
 			return false;
 		}
@@ -89,7 +87,7 @@ It contains the methods that check if a user-inputted date is valid and that com
 			return false;
 		}
 		
-		if (year < THE_EIGHTYS || year > THIS_YEAR) {
+		if (year < THIS_YEAR || year > THIS_YEAR) {
 			return false;
 		}
 		
@@ -102,22 +100,30 @@ It contains the methods that check if a user-inputted date is valid and that com
 		}
 		
 		
+		//feb 29 2021: leap day but not divisible by 4
 		if (month == FEB) {
-			if (day > FEB_LAST_DAY) {
+			if (day > FEB_LEAP_LAST_DAY) {
 				return false;
 			}
 			
-			if (day == FEB_LAST_DAY && year%QUADRENNIAL != 0) {
-				if (year % QUADRENNIAL == 0) {
-					if (year % CENTENNIAL == 0) {
-						if (year % QUARTERCENTENNIAL == 0) {
-							return true;
-						}
+			
+			
+			if (day == FEB_LEAP_LAST_DAY && year % QUADRENNIAL == 0) { //if its feb 29 and year divisible by 4
+				if (year % CENTENNIAL == 0) { //if year divisible by 100
+					if (year % QUARTERCENTENNIAL == 0) { //if year divisible by 400
+						return true;
 					}
 					return false;
 				}
 				return false;
+			} 
+			
+			if (day == FEB_LEAP_LAST_DAY && year % QUADRENNIAL != 0) {
+				return false;
 			}
+
+			
+			return true;
 			
 		}
 		
@@ -161,6 +167,6 @@ It contains the methods that check if a user-inputted date is valid and that com
 		
 		return 0;
 	}
-	
+		
 	
 }
