@@ -157,4 +157,20 @@ public class Student {
 	public void setTuitionDue(double tuitionDue) {
 		this.tuitionDue = tuitionDue;
 	}
+	
+	public double getDidFinancialAid() {
+		return this.didFinancialAid;
+	}
+	
+	public void setDidFinancialAid(double fa) {
+		this.didFinancialAid = fa;
+	}
+	
+	public Date getDatePaid() {
+		return datePaid;
+	}
+	
+	public void setDatePaid(Date date) {
+		this.datePaid = date;
+	}
 }
