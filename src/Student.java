@@ -69,17 +69,21 @@ public class Student {
 	@Override
 	public String toString() {
 		String date = "--/--/--";
-		if(datePaid != null) {
+		if(this.datePaid.getDay() != 0) {
 			date = datePaid.printAsString(datePaid);
 		}
 		
-		String className= this.getClass().getName();
+		DecimalFormat df = new DecimalFormat("0.00");
 		
-		//need to figure out total payment and className
+		double totalPayment = 0;
+		if (this.getDidFinancialAid() != 0) {
+			totalPayment = originalTuition - tuitionDue - didFinancialAid;
+		} else {
+			totalPayment = originalTuition - tuitionDue;
+		}
 		
 		return profile.toString() + ":" + String.valueOf(creditHours) + " credit hours" + ":tuition due:" 
-		+ String.valueOf(tuitionDue) + ":total payment:" + String.valueOf(tuitionDue) + ":last payment date: " + date
-		+ ":" + className;
+		+ df.format(tuitionDue) + ":total payment:" + df.format(totalPayment) + ":last payment date: " + date + ":";
 	}
 	
 	/**
