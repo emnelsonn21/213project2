@@ -1,9 +1,17 @@
-
+/**
+This class defines a Roster and contains all methods to edit a given roster
+@author Emily Nelson, Cristofer Gomez-Martinez
+*/
 public class Roster {
 	private Student[] roster;
 	private int size;
 	
-	
+	/**
+	Finds the index where the student is located in the Student array
+	@param student the student being looked for
+	@return the index of the student if found, -1 otherwise
+	@author Emily Nelson
+	*/
 	private int find(Student student) {
 		for (int index = 0; index < size; index++) {
 			if (student.equals(roster[index])) {
@@ -13,15 +21,29 @@ public class Roster {
 		return -1;
 	}
 	
-	
+	/**
+	Returns the array of students
+        @return Student array
+	@author Emily Nelson 
+	*/
 	public Student[] getStudents() {
 		return roster;
 	}
+	
+	/**
+	Sets the Student array to a new Student array
+	@param newStudents the new Student array to set
+	@author Emily Nelson
+	*/
 	public void setStudents(Student[] newStudents) {
 		this.roster = newStudents;
 	}
 	
-	
+	/**
+	Increases the capacity of the Student array by 4
+	Grown whenever array is full
+	@author Emily Nelson
+	*/
 	private void grow() {
 		Student[] grownRoster = new Student[roster.length + 4];
 		
@@ -36,7 +58,14 @@ public class Roster {
 		roster = grownRoster;
 	}
 	
-	
+	/**
+	Checks if a student can be added to the Student array
+	Adds student to Student array if student is not found in array
+	Does nothing if the student is alrady in the albums array
+	@param student the student that is to be added
+	@return true if student is not in albums array, false otherwise
+	@author Emily Nelson
+	*/
 	public boolean add(Student student) {
 		
 		if (find(student) != -1) {
@@ -53,6 +82,14 @@ public class Roster {
 		return true;
 	}
 	
+	/**
+	Checks if a student can be removed from the Student array
+	Removes student from Student array if student is found
+	Does nothing if the student is not in Student array
+	@param student the student that is to be removed
+	@return true if student is in Student array, false otherwise
+	@author Emily Nelson
+	*/
 	public boolean remove(Student student) {
 		if (find(student) == -1) {
 			return false;
