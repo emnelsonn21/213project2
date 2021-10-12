@@ -26,7 +26,7 @@ It contains the methods that check if a user-inputted date is valid and that com
 				year = Integer.valueOf(tokenizer.nextToken().trim());
 			}
 			catch (NumberFormatException nfe) {
-				throw new IllegalArgumentException();
+				
 		    }
 			
 			Calendar calendar = Calendar.getInstance();
@@ -100,7 +100,6 @@ It contains the methods that check if a user-inputted date is valid and that com
 		}
 		
 		
-		//feb 29 2021: leap day but not divisible by 4
 		if (month == FEB) {
 			if (day > FEB_LEAP_LAST_DAY) {
 				return false;
@@ -108,9 +107,9 @@ It contains the methods that check if a user-inputted date is valid and that com
 			
 			
 			
-			if (day == FEB_LEAP_LAST_DAY && year % QUADRENNIAL == 0) { //if its feb 29 and year divisible by 4
-				if (year % CENTENNIAL == 0) { //if year divisible by 100
-					if (year % QUARTERCENTENNIAL == 0) { //if year divisible by 400
+			if (day == FEB_LEAP_LAST_DAY && year % QUADRENNIAL == 0) { 
+				if (year % CENTENNIAL == 0) { 
+					if (year % QUARTERCENTENNIAL == 0) { 
 						return true;
 					}
 					return false;
@@ -166,6 +165,10 @@ It contains the methods that check if a user-inputted date is valid and that com
 		}
 		
 		return 0;
+	}
+	
+	public int getDay() {
+	    return this.day;
 	}
 		
 	
