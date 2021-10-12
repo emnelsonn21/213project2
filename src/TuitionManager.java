@@ -1,3 +1,4 @@
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -8,6 +9,8 @@ This class contains the method that organizes the user input
 public class TuitionManager {
 
 	public static final int MINFULLTIME = 12; 
+	public static final int MIN_CREDS = 3;
+	public static final int MAX_CREDS =24;
 	
 	/**
 	Reads the command lines from the console
@@ -24,8 +27,7 @@ public class TuitionManager {
 		
 		while(sc.hasNextLine()) {
 			String input = sc.next();
-			
-			input = input.replace(" ", "");
+	
 			StringTokenizer tokenizer = new StringTokenizer(input,",");
 			
 			if (tokenizer.hasMoreElements()) {
@@ -35,18 +37,19 @@ public class TuitionManager {
 				
 				String name;
 				String major;
-				int tuitionDue = 0;
+				//int tuitionDue = 0;
 				Profile profile = new Profile();
 				Student newStudent = new Student();
 				Student foundStudent = new Student();
+				boolean worked = false;
 				
 				switch (command) {
 					case "AR": Resident newResident = makeNewResident(newInput, tokenizer);
-						   if (newResident == null) {
-							break;
-					 	   }
-						   addStudent(newResident, worked, roster);
-						   break;
+							   if (newResident == null) {
+								   break;
+							   }
+							   addStudent(newResident, worked, roster);
+							   break;
 							   
 					case "AN" : Nonresident newNonresident = makeNewNonresident(newInput, tokenizer);
 					   			if (newNonresident == null) {
@@ -99,7 +102,7 @@ public class TuitionManager {
 							   foundStudent.setDatePaid(newDate);
 							   System.out.println("Tuition updated");
 							   break;
-						
+							   
 					case "C" : roster.getAllTuitions();
 							   System.out.println("Calculation Completed");
 							   break;
@@ -148,7 +151,8 @@ public class TuitionManager {
 					  			
 					case "PN" : roster.printByName();
 							    break;
-
+			   	       		   
+			   	    //now just the prints UGH that's a tomorrow problem
 					default: System.out.println("Command " + command + " not supported!");
 							   
 				}
@@ -166,7 +170,7 @@ public class TuitionManager {
 	@param T the current token from string
 	@return instance of Resident
 	@author Emily Nelson
-	*/
+	*/	
 	public Resident makeNewResident(String line, StringTokenizer T) {
 		String name= null;
 		String major = null;
@@ -209,11 +213,11 @@ public class TuitionManager {
 		if (noCredits < 0) {
 			System.out.println("Credit hours cannot be negative.");
 		}
-		if (noCredits < 3) {
+		if (noCredits < MIN_CREDS) {
 			System.out.println("Minimum credit hours is 3.");
 			return null;
 		}
-		if (noCredits > 24) {
+		if (noCredits > MAX_CREDS) {
 			System.out.println("Credit hours exceed the maximum 24.");
 			return null;
 		}
@@ -275,11 +279,11 @@ public class TuitionManager {
 		if (noCredits < 0) {
 			System.out.println("Credit hours cannot be negative.");
 		}
-		if (noCredits < 3) {
+		if (noCredits < MIN_CREDS) {
 			System.out.println("Minimum credit hours is 3.");
 			return null;
 		}
-		if (noCredits > 24) {
+		if (noCredits > MAX_CREDS) {
 			System.out.println("Credit hours exceed the maximum 24.");
 			return null;
 		}
@@ -341,14 +345,11 @@ public class TuitionManager {
 		if (noCredits < 0) {
 			System.out.println("Credit hours cannot be negative.");
 		}
-		if (noCredits < 3) {
+		if (noCredits < MIN_CREDS) {
 			System.out.println("Minimum credit hours is 3.");
 			return null;
 		}
-		if (noCredits < 12) {
-			System.out.println("International students must enroll in at least 12 credits.");
-			return null;
-		}
+		
 		
 		boolean isFullTime = (noCredits < MINFULLTIME) ? false : true;
 		double tuitionDue = 0;
@@ -358,6 +359,15 @@ public class TuitionManager {
 			isStudyAbroad = Boolean.valueOf(T.nextToken());
 		} catch(NoSuchElementException e) {
 			System.out.println("Missing whether international student is study abroad");
+			return null;
+		}
+		
+		if (noCredits < MINFULLTIME && isStudyAbroad == false) {
+			System.out.println("International students must enroll in at least 12 credits.");
+			return null;
+		}
+		if (noCredits > MINFULLTIME && isStudyAbroad == true) {
+			System.out.println("International students studying abroad may not enroll in more than 12 credits.");
 			return null;
 		}
 		International newInternational = new International(profile, isFullTime, noCredits, tuitionDue, isStudyAbroad);
@@ -434,9 +444,8 @@ public class TuitionManager {
 		return newTristate;
 		
 	}
-	
 	/**
-	Makes new instance of Profile where all attributes are filled
+	Makes new instance of Profile given name and major where all attributes are filled
 	@param name the name to set for Profile
 	@param strMajor the major to set for Profile
 	@return instance of Profile
@@ -460,7 +469,7 @@ public class TuitionManager {
 	}
 	
 	/**
-	Makes new instance of Profile where all attributes are filled
+	Makes new instance of Profile from command line where all attributes are filled
 	@param line the string being tokenized
 	@param T the current token from string
 	@return instance of Profile
@@ -494,7 +503,3 @@ public class TuitionManager {
 			   System.out.println("Student already in roster");
 		   }
 	}
-	
-
-	
-}
