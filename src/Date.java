@@ -1,6 +1,4 @@
 import java.util.Calendar;
-import java.util.StringTokenizer;
-
 
 /**
 This class defines a Date object, assigning it a month/day/year value
